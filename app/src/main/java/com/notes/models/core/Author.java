@@ -27,4 +27,12 @@ public class Author extends Model {
     @Column(name = "AUTHOR_DESCRIPTION")
     private String authorDescription;
 
+
+    public String getAuthorDescription() {
+        return authorDescription;
+    }
+
+    public void setAuthorDescription(String authorDescription) {
+        this.authorDescription = authorDescription;
+    }
 }
