@@ -12,14 +12,11 @@ import com.notes.models.users.User;
 @Table(name = "USER_PAYMENT")
 public class UserPayment extends Model{
 
-    @Column(name = "USERID_PAYMENTID", unique = true, notNull = true, index = true)
-    private Long userIdPaymentId;
-
-    @Column(name = "USER_ID")
+    @Column(name = "USER")
     private User userId;
 
-    @Column(name = "PAYMENT_ID")
-    private Payment paymentId;
+    @Column(name = "PAYMENT")
+    private Payment payment;
 
     public UserPayment() {
     }

@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
  * Created by pkonwar on 4/9/2016.
  */
-@Table(name = "MODULE")
+@Table(name = "MODULES")
 public class Module extends Model {
 
     public Module() {
@@ -27,7 +27,8 @@ public class Module extends Model {
     @Column(name = "MODULE_ID", unique = true, index = true, notNull = true)
     private Long moduleId;
 
-    @Column(name = "CHAPTER")
+    //onDelete means what will happen onDelete of Chapter
+    @Column(name = "CHAPTER", onDelete = Column.ForeignKeyAction.CASCADE)
     private Chapter chapter;
 
     @Column(name = "MODULE_NAME")

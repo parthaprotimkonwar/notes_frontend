@@ -4,6 +4,8 @@ import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 
+import java.util.List;
+
 /**
  * Created by pkonwar on 4/9/2016.
  */
@@ -19,4 +21,9 @@ public class Payment extends Model {
     @Column(name = "PAYMENT_GATEWAY_PARAMS")
     private String paymentGatewayParams;
 
+    private List<UserPayment> userPaymentList;
+
+    public List<UserPayment> getUserPaymentList() {
+        return getMany(UserPayment.class, "PAYMENT");
+    }
 }

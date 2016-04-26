@@ -10,22 +10,21 @@ import java.util.Date;
 /**
  * Created by pkonwar on 4/9/2016.
  */
-@Table(name = "USER_CHAPTERS")
-public class UserChapters extends Model {
+@Table(name = "USERS_CHAPTERS")
+public class UserChapter extends Model {
 
-    public UserChapters() {
+    public UserChapter() {
     }
 
-    @Column(name = "USERID_CHAPTERID", notNull = true, unique = true, index = true)
-    private Long userIdChapterId;
-
-    @Column(name = "USER")
+    @Column(name = "USER", onDelete = Column.ForeignKeyAction.CASCADE)
     private User user;
 
-    @Column(name = "CHAPTER")
+    @Column(name = "CHAPTER", onDelete = Column.ForeignKeyAction.CASCADE)
     private Chapter chapter;
 
     @Column(name = "EXPIRATION_DATE")
     private Date expirationDate;
+
+
 
 }

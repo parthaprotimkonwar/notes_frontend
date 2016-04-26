@@ -1,16 +1,18 @@
 package com.notes.models.users;
 
+import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 import com.notes.application.enums.STATUS;
+import com.notes.models.payments.UserPayment;
 
-import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by pkonwar on 4/9/2016.
  */
 @Table(name = "USER")
-public class User implements Serializable {
+public class User extends Model {
 
     public User() {
     }
@@ -45,4 +47,15 @@ public class User implements Serializable {
     @Column(name = "STATUS")
     private STATUS status;
 
+    private List<UserChapter> userChapterList;
+
+    private List<UserPayment> userPaymentList;
+
+    public List<UserChapter> getUserChapterList() {
+        return getMany(UserChapter.class, "USER");
+    }
+
+    public List<UserPayment> getUserPaymentList() {
+        return getMany(UserPayment.class, "USER");
+    }
 }

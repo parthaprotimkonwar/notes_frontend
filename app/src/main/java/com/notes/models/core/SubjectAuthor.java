@@ -9,15 +9,14 @@ import com.activeandroid.annotation.Table;
  */
 @Table(name = "SUBJECT_AUTHOR")
 public class SubjectAuthor extends Model {
+
     public SubjectAuthor() {
     }
 
-    @Column(name = "SUBJECTID_AUTHORID", unique = true, notNull = true, index = true)
-    private Long subjectIdAuthorId;
-
-    @Column(name = "SUBJECT")
+    @Column(name = "SUBJECT", onDelete = Column.ForeignKeyAction.CASCADE)
     private Subject subject;
 
-    @Column(name = "AUTHOR")
+    @Column(name = "AUTHOR", onDelete = Column.ForeignKeyAction.CASCADE)
     private Author author;
+
 }

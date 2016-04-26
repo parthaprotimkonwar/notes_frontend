@@ -4,6 +4,8 @@ import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 
+import java.util.List;
+
 /**
  * Created by pkonwar on 4/9/2016.
  */
@@ -27,12 +29,9 @@ public class Author extends Model {
     @Column(name = "AUTHOR_DESCRIPTION")
     private String authorDescription;
 
+    private List<SubjectAuthor> subjectAuthorList;
 
-    public String getAuthorDescription() {
-        return authorDescription;
-    }
-
-    public void setAuthorDescription(String authorDescription) {
-        this.authorDescription = authorDescription;
+    public List<SubjectAuthor> getSubjectAuthorList() {
+        return getMany(SubjectAuthor.class, "AUTHOR");
     }
 }
