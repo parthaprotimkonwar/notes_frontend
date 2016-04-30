@@ -14,9 +14,6 @@ public class ModuleQuestionsAnswers extends Model {
     public ModuleQuestionsAnswers() {
     }
 
-    @Column(name = "MODULEID_QUESTIONID_ANSWERID")
-    private Long moduleIdQuestionIdAnswerId;
-
     @Column(name = "QUESTION_ANSWER")
     private QuestionsAnswer questionsAnswer;
 

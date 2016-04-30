@@ -3,10 +3,9 @@ package com.notes.models.core;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
-import com.notes.application.enums.STATUS;
+import com.notes.app.enums.STATUS;
 import com.notes.models.users.UserChapter;
 
-import java.io.Serializable;
 import java.util.List;
 
 

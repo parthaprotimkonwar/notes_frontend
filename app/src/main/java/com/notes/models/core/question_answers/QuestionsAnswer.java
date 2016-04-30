@@ -2,7 +2,7 @@ package com.notes.models.core.question_answers;
 
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
-import com.notes.application.enums.QA_TYPE;
+import com.notes.app.enums.QA_TYPE;
 
 import java.io.Serializable;
 
@@ -12,17 +12,13 @@ import java.io.Serializable;
 @Table(name = "QUESTION_ANSWER")
 public class QuestionsAnswer implements Serializable {
 
-    public QuestionsAnswer() {
-    }
+    public QuestionsAnswer() {}
 
     public QuestionsAnswer(Question question, Answer answer, QA_TYPE type) {
         this.question = question;
         this.answer = answer;
         this.type = type;
     }
-
-    @Column(name = "QUESTION_ANSWER_ID", unique = true, notNull = true)
-    private Long questionAnswerId;
 
     @Column(name = "QUESTION")
     private Question question;

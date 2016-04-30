@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.notes.notesfrontend">
+    package="com.notes.activity">
+
+    <!--Permissions required-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -8,8 +12,17 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!--The below two configurations are used for ActiveAndroid configuration-->
+        <meta-data android:name="AA_DB_NAME" android:value="pickpick.db" />
+        <meta-data android:name="AA_DB_VERSION" android:value="1" />
+
+        <!--Specfying the models here to speed up the startup process -->
+        <meta-data android:name="AA_MODELS"
+            android:value="com.notes.models.core.question_answers.Question"
+                         />
         <activity
-            android:name=".MainActivity"
+            android:name="com.notes.ui.activity.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -19,5 +32,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>

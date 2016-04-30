@@ -1,4 +1,4 @@
-package com.notes.notesfrontend;
+package com.notes.activity;
 
 import org.junit.Test;
 

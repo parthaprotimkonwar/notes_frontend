@@ -1,4 +1,4 @@
-package com.notes.application.enums;
+package com.notes.app.enums;
 
 /**
  * Created by pkonwar on 4/9/2016.

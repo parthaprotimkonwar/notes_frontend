@@ -25,6 +25,4 @@ public class UserChapter extends Model {
     @Column(name = "EXPIRATION_DATE")
     private Date expirationDate;
 
-
-
 }
