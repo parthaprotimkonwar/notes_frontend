@@ -2,8 +2,6 @@ package com.notes.rest.bean.core;
 
 import com.google.gson.annotations.Expose;
 
-import java.io.Serializable;
-
 /**
  * Created by pkonwar on 4/9/2016.
  */
