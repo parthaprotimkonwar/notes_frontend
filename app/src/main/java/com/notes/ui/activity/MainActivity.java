@@ -5,23 +5,18 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.notes.activity.R;
-import com.notes.models.core.question_answers.Question;
 import com.notes.rest.RestClient;
-import com.notes.rest.beans.QuestionBean;
-import com.notes.rest.dto.CoreFactoryDto;
-import com.notes.rest.dto.QuestionAnswerDto;
-
-import java.util.List;
+import com.notes.rest.service.callbacks.CoreFactorySetingsCallback;
+import com.notes.rest.service.callbacks.QuestionAnswerCallback;
+import com.notes.rest.service.dto.CoreFactoryDto;
+import com.notes.rest.service.dto.QuestionAnswerDto;
 
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -43,33 +39,10 @@ public class MainActivity extends AppCompatActivity {
 
                 RestClient client = new RestClient();
                 Call<CoreFactoryDto> factoryData = client.getCoreServices().coreFactorySettings();
-                factoryData.enqueue(new Callback<CoreFactoryDto>() {
-                    @Override
-                    public void onResponse(Call<CoreFactoryDto> call, Response<CoreFactoryDto> response) {
-                        int statusCode = response.code();
-                        CoreFactoryDto factory = response.body();
-                        Log.d("NOTES", "HAIL! " + factory.chapters.toString());
-                    }
-
-                    @Override
-                    public void onFailure(Call<CoreFactoryDto> call, Throwable t) {
-                        Log.d("NOTES", "MAY DAY!" + t.getMessage() + t.fillInStackTrace());
-                    }
-                });
+                factoryData.enqueue(new CoreFactorySetingsCallback());
 
                 Call<QuestionAnswerDto> questionAnswers = client.getCoreServices().questionAnswers(8L);
-                questionAnswers.enqueue(new Callback<QuestionAnswerDto>() {
-                    @Override
-                    public void onResponse(Call<QuestionAnswerDto> call, Response<QuestionAnswerDto> response) {
-                        QuestionAnswerDto questionAnswerDto = response.body();
-                        Log.d("NOTES", "onResponse: " + questionAnswerDto.questions);
-                    }
-
-                    @Override
-                    public void onFailure(Call<QuestionAnswerDto> call, Throwable t) {
-                        Log.d("NOTES", "MAY DAY in QuestionAnswer!" + t.getMessage() + t.fillInStackTrace());
-                    }
-                });
+                questionAnswers.enqueue(new QuestionAnswerCallback());
             }
         });
     }

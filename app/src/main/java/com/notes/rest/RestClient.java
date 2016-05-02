@@ -2,7 +2,6 @@ package com.notes.rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.notes.rest.service.ApiService;
 import com.notes.rest.service.CoreServices;
 
 import java.lang.reflect.Modifier;
@@ -14,8 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by pkonwar on 4/30/2016.
  */
 public class RestClient {
-    private static final String BASE_URL = "http://192.168.1.3:9000/";
-    private ApiService apiService;
+    private static final String BASE_URL = "http://192.168.1.2:9000/";
     private CoreServices coreServices;
 
     public RestClient() {
@@ -30,12 +28,7 @@ public class RestClient {
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
-        apiService = retrofit.create(ApiService.class);
         coreServices = retrofit.create(CoreServices.class);
-    }
-
-    public ApiService getApiService() {
-        return apiService;
     }
 
     public CoreServices getCoreServices() {
