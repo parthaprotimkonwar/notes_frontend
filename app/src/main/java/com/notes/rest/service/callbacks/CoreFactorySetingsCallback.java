@@ -12,6 +12,7 @@ import com.notes.db.services.core.ChapterService;
 import com.notes.db.services.core.ModuleService;
 import com.notes.db.services.core.SubjectAuthorService;
 import com.notes.db.services.core.SubjectService;
+import com.notes.rest.RestClient;
 import com.notes.rest.bean.core.AuthorsBean;
 import com.notes.rest.bean.core.ChapterBean;
 import com.notes.rest.bean.core.ModuleBean;
@@ -21,6 +22,7 @@ import com.notes.rest.service.dto.CoreFactoryDto;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -39,10 +41,16 @@ public class CoreFactorySetingsCallback implements Callback<CoreFactoryDto> {
         for(SubjectBean subjectBean : subjectBeanList) {
             Subject subject = SubjectService.findASubject(subjectBean.getSubjectId());
             if(subject == null) {
-                subject = new Subject(subjectBean.getSubjectId(), subjectBean.getSubjectName(), subjectBean.getPrice(), subjectBean.getImageUrl(), subjectBean.getStatus());
+                subject = new Subject(subjectBean.getSubjectId(), subjectBean.getSubjectName(), subjectBean.getPrice(), null, subjectBean.getStatus());
                 subject.save();    //save this subject in db
             } else {
                 System.out.println("Subject with detials " + subject.getSubjectName() + " already present.");
+            }
+            if(subject!= null && subject.getImageBlob() == null) {
+                //Get the image from a url and save it. Done at a later point of time as this operation can be performed parallely
+                RestClient client = new RestClient();
+                Call<ResponseBody> responseBody = client.getCoreServices().downloadImage("assets/" + subjectBean.getImageUrl());
+                responseBody.enqueue(new SubjectImageCallback(subject));
             }
         }
 

@@ -1,6 +1,7 @@
 package com.notes.db.services.core;
 
 import com.activeandroid.query.Select;
+import com.notes.db.models.ImageStorer;
 import com.notes.db.models.core.Subject;
 
 /**
@@ -15,6 +16,11 @@ public class SubjectService {
      */
     public static Subject findASubject(Long subjectId) {
         return new Select().from(Subject.class).where("SUBJECT_ID = ?", subjectId).executeSingle();
+    }
+
+
+    public static ImageStorer findAImageStorer(String imageId) {
+        return new Select().from(ImageStorer.class).where("IMAGE_ID = ?", imageId).executeSingle();
     }
 
 }

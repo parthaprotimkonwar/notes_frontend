@@ -17,7 +17,7 @@
 
         <!--The below two configurations are used for ActiveAndroid configuration-->
         <meta-data android:name="AA_DB_NAME" android:value="pickpick.db" />
-        <meta-data android:name="AA_DB_VERSION" android:value="4" />
+        <meta-data android:name="AA_DB_VERSION" android:value="5" />
 
         <!--Specfying the models here to speed up the startup process -->
         <meta-data android:name="AA_MODELS"
@@ -30,7 +30,8 @@
                            com.notes.db.models.core.question_answers.Answer,
                            com.notes.db.models.core.question_answers.QuestionAnswer,
                            com.notes.db.models.core.question_answers.QuestionOptions,
-                           com.notes.db.models.core.question_answers.ModuleQuestionAnswer,"/>
+                           com.notes.db.models.core.question_answers.ModuleQuestionAnswer,
+                           com.notes.db.models.ImageStorer"/>
         <activity
             android:name="com.notes.ui.activity.MainActivity"
             android:label="@string/app_name"

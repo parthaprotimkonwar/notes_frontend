@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +42,17 @@ public class MainActivity extends AppCompatActivity {
 
                 Call<QuestionAnswerDto> questionAnswers = client.getCoreServices().questionAnswers(8L);
                 questionAnswers.enqueue(new QuestionAnswerCallback());
+
+                /*ImageStorer imageStorer = SubjectService.findAImageStorer("SOMETWO1");
+                if(imageStorer != null) {
+                    ImageView imageView = (ImageView) findViewById(R.id.imageView);
+                    Bitmap bm = BitmapFactory.decodeByteArray(imageStorer.imageBlob, 0, imageStorer.imageBlob.length);
+                    imageView.setImageBitmap(bm);
+                } else {
+                    System.out.println("No Such Image to display");
+                }*/
+
+
             }
         });
     }

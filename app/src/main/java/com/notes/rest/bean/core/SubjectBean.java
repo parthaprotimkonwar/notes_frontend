@@ -37,7 +37,7 @@ public class SubjectBean {
     @Expose
     private Float price;
     @Expose
-    private String imageUrl;
+    private String imageUrl;            //this image url is to be changed to image blob
     @Expose
     private STATUS status;
 

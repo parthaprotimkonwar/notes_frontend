@@ -16,11 +16,11 @@ public class Subject extends Model {
     public Subject() {
     }
 
-    public Subject(Long subjectId, String subjectName, Float price, String imageUrl, STATUS status) {
+    public Subject(Long subjectId, String subjectName, Float price, byte[] imageBlob, STATUS status) {
         this.subjectId = subjectId;
         this.subjectName = subjectName;
         this.price = price;
-        this.imageUrl = imageUrl;
+        this.imageBlob = imageBlob;
         this.status = status;
     }
 
@@ -33,8 +33,8 @@ public class Subject extends Model {
     @Column(name = "PRICE")
     private Float price;
 
-    @Column(name = "IMAGE_URL")
-    private String imageUrl;
+    @Column(name = "IMAGE_BLOB")
+    private byte[] imageBlob;
 
     @Column(name = "STATUS")
     private STATUS status;
@@ -76,12 +76,12 @@ public class Subject extends Model {
         this.price = price;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public byte[] getImageBlob() {
+        return imageBlob;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImageBlob(byte[] imageBlob) {
+        this.imageBlob = imageBlob;
     }
 
     public STATUS getStatus() {
