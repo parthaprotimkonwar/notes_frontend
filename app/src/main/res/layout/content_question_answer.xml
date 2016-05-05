@@ -2,8 +2,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment"
-    android:name="com.notes.ui.activity.main.MainActivityFragment"
+    android:name="com.notes.ui.activity.questionanswers.QuestionAnswerActivityFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:layout="@layout/adapter_courses_list_item" />
+    tools:layout="@layout/fragment_question_answer" />

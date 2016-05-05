@@ -1,4 +1,4 @@
-package com.notes.ui.activity;
+package com.notes.ui.activity.main;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -18,7 +18,7 @@ import com.notes.rest.service.dto.QuestionAnswerDto;
 
 import retrofit2.Call;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
