@@ -26,18 +26,13 @@ public class QuestionAnswerActivityFragment extends Fragment {
     }
 
     private List<QuestionAnswersModal> questionAnswerModalList = null;
-    private DataBundle dataBundle = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 
-        Bundle bundle = getActivity().getIntent().getExtras();
-        if(bundle != null) {
-            dataBundle = (DataBundle) bundle.getSerializable("BUNDLE");
-        }
-
+        DataBundle dataBundle = DataBundle.getInstance();
         Long chapterId = dataBundle.getChapterId();
         System.out.println("PARTHA : QuestionAnswerActivity : " + chapterId);
         questionAnswerModalList = ChapterService.findQuestionAnswerForChapter(chapterId);
@@ -52,6 +47,7 @@ public class QuestionAnswerActivityFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_question_answer, container, false);
 
         linearLayout = (LinearLayout) view.findViewById(R.id.questionAnswerLinearLayout);
+
         return view;
     }
 
@@ -79,6 +75,8 @@ public class QuestionAnswerActivityFragment extends Fragment {
 
             linearLayout.addView(cardView);
         }
+
+
     }
 
 }

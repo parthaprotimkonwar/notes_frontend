@@ -1,7 +1,5 @@
 package com.notes.ui.activity.questionanswers;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,11 +8,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.notes.activity.R;
-import com.notes.ui.activity.bean.DataBundle;
 
 public class QuestionAnswerActivity extends AppCompatActivity {
-
-    private DataBundle dataBundle = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +17,6 @@ public class QuestionAnswerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_question_answer);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        Bundle bundle = getIntent().getExtras();
-        if(bundle != null) {
-            dataBundle = (DataBundle) bundle.getSerializable("BUNDLE");
-        }
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -40,7 +30,7 @@ public class QuestionAnswerActivity extends AppCompatActivity {
     }
 
 
-    @Override
+    /*@Override
     public void onBackPressed() {
         System.out.println("PARTHA PARTHA PARTHA PARTHA BACK BACK");
         Intent intent = new Intent();
@@ -49,5 +39,5 @@ public class QuestionAnswerActivity extends AppCompatActivity {
         setResult(Activity.RESULT_OK, intent);
         finish();
         super.onBackPressed();
-    }
+    }*/
 }

@@ -29,16 +29,12 @@ public class ChaptersActivityFragment extends Fragment{
     }
 
     private List<Chapter> chapters = null;
-    private DataBundle dataBundle = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Bundle bundle = getActivity().getIntent().getExtras();
-        if(bundle != null) {
-            dataBundle = (DataBundle) bundle.getSerializable("BUNDLE");
-        }
+        DataBundle dataBundle = DataBundle.getInstance();
         Long subjectId = dataBundle.getSubjectId();
         System.out.println("PARTHA : Subject at CHAPTERS_ACTIVITY is : " + subjectId);
         Subject subject = SubjectService.findASubject(subjectId);
@@ -68,8 +64,8 @@ public class ChaptersActivityFragment extends Fragment{
                 System.out.println("PARTHA : Cliekd on : " + clickedOn);
 
                 Intent intent = new Intent(getActivity(), QuestionAnswerActivity.class);
+                DataBundle dataBundle = DataBundle.getInstance();
                 dataBundle.setChapterId(chapters.get(position).getChapterId());
-                intent.putExtra("BUNDLE", dataBundle);
                 startActivity(intent);
             }
         });

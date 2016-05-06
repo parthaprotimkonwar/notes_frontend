@@ -99,10 +99,8 @@ public class AllCoursesFragment extends Fragment {
                 System.out.println("PARTHA : Clicked" + subject.getSubjectName());
                 Intent intent = new Intent(getActivity(), ChaptersActivity.class);
 
-                DataBundle dataBundle = new DataBundle();
+                DataBundle dataBundle = DataBundle.getInstance();
                 dataBundle.setSubjectId(subject.getSubjectId());
-
-                intent.putExtra("BUNDLE", dataBundle);
                 startActivity(intent);
             }
         });
