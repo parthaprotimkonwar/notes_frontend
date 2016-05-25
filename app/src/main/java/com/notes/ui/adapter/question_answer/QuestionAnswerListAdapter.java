@@ -34,10 +34,9 @@ public class QuestionAnswerListAdapter extends ArrayAdapter<QuestionAnswersModal
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.adapter_question_answers, null);
 
+
+        //Bookmark TextView
         TextView bookmarkTextView = (TextView) view.findViewById(R.id.bookmark_textview);
-
-        TextView commnetsTextView = (TextView) view.findViewById(R.id.comments_textview);
-
         bookmarkTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,7 +49,9 @@ public class QuestionAnswerListAdapter extends ArrayAdapter<QuestionAnswersModal
         });
 
 
-        commnetsTextView.setOnClickListener(new View.OnClickListener() {
+        //Comments TextView
+        TextView commentsTextView = (TextView) view.findViewById(R.id.comments_textview);
+        commentsTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 View parentRow = (View) v.getParent();
@@ -60,6 +61,39 @@ public class QuestionAnswerListAdapter extends ArrayAdapter<QuestionAnswersModal
             }
         });
 
+        //Answers TextView
+        TextView answerTextView = (TextView) view.findViewById(R.id.answer_textview);
+        answerTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateAnswer(view);
+            }
+        });
+
+        //ReadMore TextView
+        TextView readMoreTextView = (TextView) view.findViewById(R.id.readmore_textview);
+        readMoreTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateAnswer(view);
+            }
+        });
         return view;
+    }
+
+    /**
+     * Update the Answer in the View
+     * @param view
+     */
+    private void updateAnswer(View view) {
+        View parentRow = (View) view.getParent();
+        ListView listView = (ListView) parentRow.getParent();
+        final int position = listView.getPositionForView(parentRow);
+
+        //update answer
+        QuestionAnswersModal questionAnswersModal = questionAnswersModalList.get(position);
+        String answer = questionAnswersModal.getAnswer();
+        TextView answerTextView = (TextView) parentRow.findViewById(R.id.answer_textview);
+        answerTextView.setText(answer);
     }
 }
