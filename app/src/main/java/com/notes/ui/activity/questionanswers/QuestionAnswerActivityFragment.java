@@ -3,17 +3,17 @@ package com.notes.ui.activity.questionanswers;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 import com.notes.activity.R;
 import com.notes.db.models.ui.QuestionAnswersModal;
 import com.notes.db.services.core.ChapterService;
 import com.notes.ui.activity.bean.DataBundle;
+import com.notes.ui.adapter.question_answer.QuestionAnswerListAdapter;
 
 import java.util.List;
 
@@ -39,43 +39,30 @@ public class QuestionAnswerActivityFragment extends Fragment {
 
     }
 
-    private LinearLayout linearLayout = null;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_question_answer, container, false);
+        return inflater.inflate(R.layout.fragment_question_answer, container, false);
 
-        linearLayout = (LinearLayout) view.findViewById(R.id.questionAnswerLinearLayout);
-
-        return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        for(QuestionAnswersModal questionAnswersModal : questionAnswerModalList) {
-            CardView cardView = new CardView(getActivity());
-            cardView.setRadius(4F);
+        QuestionAnswerListAdapter questionAnswerListAdapter= new QuestionAnswerListAdapter(getContext(), R.layout.adapter_question_answers, questionAnswerModalList);
+        ListView listView = (ListView) getActivity().findViewById(R.id.question_answers_list_view);
+        listView.setAdapter(questionAnswerListAdapter);
 
-            LinearLayout innerlayout = new LinearLayout(getActivity());
-            innerlayout.setOrientation(LinearLayout.VERTICAL);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            TextView questionText = new TextView(getActivity());
-            TextView answerText = new TextView(getActivity());
+                System.out.println("PARTHA : LV : Position : " + position);
+                System.out.println("PARTHA : LV : Id : " + id);
 
-            questionText.setText(questionAnswersModal.getQuestion());
-            answerText.setText(questionAnswersModal.getAnswer());
-
-            innerlayout.addView(questionText);
-            innerlayout.addView(answerText);
-
-            cardView.addView(innerlayout);
-
-            linearLayout.addView(cardView);
-        }
-
+            }
+        });
 
     }
 
