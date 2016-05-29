@@ -1,8 +1,7 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -13,7 +12,8 @@
     <!--Question Answer relative layout-->
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/comments_qa_relativeLayout">
 
         <TextView
             android:layout_width="wrap_content"
@@ -33,7 +33,9 @@
     </RelativeLayout>
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/comments_qa_relativeLayout"
+        android:id="@+id/comments_comments_listview_frameLayout">
 
         <!--Comments List View-->
         <ListView
@@ -45,7 +47,10 @@
     </FrameLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/comments_comments_listview_frameLayout"
+        >
 
         <EditText
             android:layout_width="match_parent"
@@ -53,16 +58,19 @@
             android:inputType="textMultiLine"
             android:ems="10"
             android:id="@+id/comment_comment_editText"
-            android:layout_gravity="center_horizontal" />
+             />
 
+        <!--android:text="Submit" android:layout_toRightOf="@+id/comment_comment_editText"-->
         <Button
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Submit"
+
+            android:onClick="addNewComment"
             android:id="@+id/comment_newcomment_button"
-            android:layout_below="@+id/comment_comment_editText" />
+            android:layout_alignRight="@+id/comment_comment_editText"
+            android:background="@android:drawable/ic_input_add" />
     </RelativeLayout>
 
 
-</LinearLayout>
+</RelativeLayout>

@@ -26,6 +26,7 @@ public class CommentsActivityFragment extends Fragment {
 
     List<UserComment> userCommentList;
     QuestionAnswersModal questionAnswersModal;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,4 +57,5 @@ public class CommentsActivityFragment extends Fragment {
         ListView listView = (ListView) getActivity().findViewById(R.id.comments_list_view);
         listView.setAdapter(commentsListAdapter);
     }
+
 }
