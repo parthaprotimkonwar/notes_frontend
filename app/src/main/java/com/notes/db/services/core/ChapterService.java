@@ -2,13 +2,18 @@ package com.notes.db.services.core;
 
 import com.activeandroid.query.Select;
 import com.notes.app.enums.QA_TYPE;
+import com.notes.app.enums.STATUS;
+import com.notes.db.models.bean.QuestionAnswersModal;
 import com.notes.db.models.core.Chapter;
 import com.notes.db.models.core.Module;
 import com.notes.db.models.core.question_answers.Answer;
 import com.notes.db.models.core.question_answers.ModuleQuestionAnswer;
 import com.notes.db.models.core.question_answers.Question;
-import com.notes.db.models.ui.QuestionAnswersModal;
+import com.notes.db.models.useractivities.UserBookmark;
+import com.notes.db.models.useractivities.UserComment;
 import com.notes.db.services.core.question_answers.ModuleQuestionsAnswerService;
+import com.notes.db.services.core.useractivities.UserBookmarkService;
+import com.notes.db.services.core.useractivities.UserCommentService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,11 +55,18 @@ public class ChapterService {
         for(Module module : modules) {
             List<ModuleQuestionAnswer> moduleQuestionAnswerList = ModuleQuestionsAnswerService.findModuleQuestionsAnswers(module.getId());
             for(ModuleQuestionAnswer moduleQuestionAnswer : moduleQuestionAnswerList) {
+                Long questionAnswerGetId = moduleQuestionAnswer.getQuestionAnswer().getId();
+                Long moduleGetId = moduleQuestionAnswer.getModule().getId();
+
                 Question question = moduleQuestionAnswer.getQuestionAnswer().getQuestion();
                 Answer answer = moduleQuestionAnswer.getQuestionAnswer().getAnswer();
                 QA_TYPE type = moduleQuestionAnswer.getQuestionAnswer().getType();
-                QuestionAnswersModal questionAnswersModal = new QuestionAnswersModal(moduleQuestionAnswer.getQuestionAnswer().getQuestionAnswerId(),
-                        question.getQuestion(), answer.getAnswer(), type, null);
+
+                UserBookmark userBookmark = UserBookmarkService.bookmarkedWithStatus(moduleQuestionAnswer.getId(), STATUS.ACTIVE);
+                List<UserComment> userComment = UserCommentService.commentsWithStatus(moduleQuestionAnswer.getId(), STATUS.ACTIVE);
+
+                QuestionAnswersModal questionAnswersModal = new QuestionAnswersModal(moduleGetId, questionAnswerGetId,
+                                                                        question.getQuestion(), answer.getAnswer(), type, null, userBookmark, userComment);
                 questionAnswerModalList.add(questionAnswersModal);
             }
         }

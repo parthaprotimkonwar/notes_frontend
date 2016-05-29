@@ -6,11 +6,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.notes.activity.R;
-import com.notes.db.models.ui.QuestionAnswersModal;
+import com.notes.db.models.bean.QuestionAnswersModal;
 import com.notes.db.services.core.ChapterService;
 import com.notes.ui.activity.bean.DataBundle;
 import com.notes.ui.adapter.question_answer.QuestionAnswerListAdapter;
@@ -54,7 +53,7 @@ public class QuestionAnswerActivityFragment extends Fragment {
         ListView listView = (ListView) getActivity().findViewById(R.id.question_answers_list_view);
         listView.setAdapter(questionAnswerListAdapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -62,7 +61,7 @@ public class QuestionAnswerActivityFragment extends Fragment {
                 System.out.println("PARTHA : LV : Id : " + id);
 
             }
-        });
+        });*/
 
     }
 

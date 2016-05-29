@@ -26,18 +26,18 @@
         android:layout_below="@+id/quick_comments_textview"
         android:layout_marginTop="10dp"
         android:textStyle="bold"
-        android:id="@+id/question_textview"
+        android:id="@+id/comments_question_textview"
         android:textColor="@android:color/primary_text_light" />
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/question_textview"
+        android:layout_below="@+id/comments_question_textview"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Those Extra 20rs!! Once we had to replace our water purifier cartidge. So we called the nearest help center and a guy came and fixed it.The super waewsome philantrhropist in .. (more)"
         android:layout_marginTop="10dp"
-        android:id="@+id/answer_textview"
+        android:id="@+id/comments_answer_textview"
         android:textColor="@android:color/primary_text_light"/>
 
     <TextView
@@ -47,7 +47,7 @@
         android:text="Bookmark"
         android:layout_marginTop="10dp"
         android:id="@+id/bookmark_textview"
-        android:layout_below="@+id/answer_textview"
+        android:layout_below="@+id/comments_answer_textview"
         android:background="@color/colorPrimaryLight"
         android:textColor="@color/colorPrimary"
         android:layout_alignParentLeft="true"

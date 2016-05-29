@@ -1,24 +1,59 @@
-package com.notes.db.models.ui;
+package com.notes.db.models.bean;
 
 import com.notes.app.enums.QA_TYPE;
+import com.notes.db.models.useractivities.UserBookmark;
+import com.notes.db.models.useractivities.UserComment;
+
+import java.util.List;
 
 /**
  * Created by pkonwar on 5/5/2016.
  */
 public class QuestionAnswersModal {
 
-    private Long questionAnswerId;
+    private Long moduleGetId;
+    private Long questionAnswerGetId;
     private String question;
     private String answer;
     private QA_TYPE questionType;
     private Options options;
+    private UserBookmark bookmark;
+    private List<UserComment> userComments;
 
-    public QuestionAnswersModal(Long questionAnswerId, String question, String answer, QA_TYPE questionType, Options options) {
-        this.questionAnswerId = questionAnswerId;
+    public QuestionAnswersModal(Long moduleGetId, Long questionAnswerGetId, String question, String answer, QA_TYPE questionType, Options options,
+                                UserBookmark bookmark, List<UserComment> userComments) {
+        this.moduleGetId = moduleGetId;
+        this.questionAnswerGetId = questionAnswerGetId;
         this.question = question;
         this.answer = answer;
         this.questionType = questionType;
         this.options = options;
+        this.bookmark = bookmark;
+        this.userComments = userComments;
+    }
+
+    public UserBookmark getBookmark() {
+        return bookmark;
+    }
+
+    public void setBookmark(UserBookmark bookmark) {
+        this.bookmark = bookmark;
+    }
+
+    public List<UserComment> getUserComments() {
+        return userComments;
+    }
+
+    public void setUserComments(List<UserComment> userComments) {
+        this.userComments = userComments;
+    }
+
+    public Long getModuleGetId() {
+        return moduleGetId;
+    }
+
+    public void setModuleGetId(Long moduleGetId) {
+        this.moduleGetId = moduleGetId;
     }
 
     static class Options{
@@ -68,12 +103,12 @@ public class QuestionAnswersModal {
 
     }
 
-    public Long getQuestionAnswerId() {
-        return questionAnswerId;
+    public Long getQuestionAnswerGetId() {
+        return questionAnswerGetId;
     }
 
-    public void setQuestionAnswerId(Long questionAnswerId) {
-        this.questionAnswerId = questionAnswerId;
+    public void setQuestionAnswerGetId(Long questionAnswerGetId) {
+        this.questionAnswerGetId = questionAnswerGetId;
     }
 
     public String getQuestion() {

@@ -17,7 +17,8 @@ public class User extends Model {
     public User() {
     }
 
-    public User(String userName, String emailId, String phoneNo, String password, String deviceId, STATUS status) {
+    public User(Long userId, String userName, String emailId, String phoneNo, String password, String deviceId, STATUS status) {
+        this.userId = userId;
         this.userName = userName;
         this.emailId = emailId;
         this.phoneNo = phoneNo;

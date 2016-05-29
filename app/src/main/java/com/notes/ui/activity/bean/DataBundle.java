@@ -1,5 +1,7 @@
 package com.notes.ui.activity.bean;
 
+import com.notes.db.models.bean.QuestionAnswersModal;
+
 import java.io.Serializable;
 
 /**
@@ -12,6 +14,7 @@ public class DataBundle implements Serializable {
 
     private Long subjectId;
     private Long chapterId;
+    private QuestionAnswersModal questionAnswersModal;
 
     private static DataBundle dataBundle = new DataBundle();
 
@@ -33,5 +36,13 @@ public class DataBundle implements Serializable {
 
     public void setChapterId(Long chapterId) {
         this.chapterId = chapterId;
+    }
+
+    public QuestionAnswersModal getQuestionAnswersModal() {
+        return questionAnswersModal;
+    }
+
+    public void setQuestionAnswersModal(QuestionAnswersModal questionAnswersModal) {
+        this.questionAnswersModal = questionAnswersModal;
     }
 }
