@@ -132,8 +132,17 @@ public class QuestionAnswerListAdapter extends ArrayAdapter<QuestionAnswersModal
             STATUS status = questionAnswersModal.getBookmark().getStatus();
             if(status == STATUS.ACTIVE) {
                 System.out.println("PARTHA : ACTIVE");
+                TextView bookMarkTextView = (TextView) findElementInParentById(view, R.id.bookmark_textview);
+                bookMarkTextView.setText("Bookmark");
+                bookMarkTextView.setBackgroundColor(getContext().getResources().getColor(R.color.colorPrimaryLight));
+                bookMarkTextView.setTextColor(getContext().getResources().getColor(R.color.colorPrimary));
             } else {
                 System.out.println("PARTHA : INACTIVE");
+                TextView bookMarkTextView = (TextView) findElementInParentById(view, R.id.bookmark_textview);
+                bookMarkTextView.setText("Bookmarked");
+                bookMarkTextView.setBackgroundColor(getContext().getResources().getColor(R.color.colorAccent));
+                bookMarkTextView.setTextColor(getContext().getResources().getColor(R.color.colorPrimaryLight));
+
             }
             STATUS toggeledStatus = status == STATUS.ACTIVE ? STATUS.INACTIVE : STATUS.ACTIVE;
             userBookmark.setStatus(toggeledStatus);

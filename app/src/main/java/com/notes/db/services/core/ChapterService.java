@@ -72,4 +72,36 @@ public class ChapterService {
         }
         return questionAnswerModalList;
     }
+
+    public static List<QuestionAnswersModal> findQuestionAnswerForChapter(Long chapterId, Boolean onlyBookmarked) {
+        Chapter chapter = findAChapter(chapterId);
+        List<QuestionAnswersModal> questionAnswerModalList = new ArrayList<>();
+        List<Module> modules = ModuleService.modules(chapter.getId());
+
+        for(Module module : modules) {
+            List<ModuleQuestionAnswer> moduleQuestionAnswerList = ModuleQuestionsAnswerService.findModuleQuestionsAnswers(module.getId());
+            for(ModuleQuestionAnswer moduleQuestionAnswer : moduleQuestionAnswerList) {
+                Long questionAnswerGetId = moduleQuestionAnswer.getQuestionAnswer().getId();
+                Long moduleGetId = moduleQuestionAnswer.getModule().getId();
+
+                Question question = moduleQuestionAnswer.getQuestionAnswer().getQuestion();
+                Answer answer = moduleQuestionAnswer.getQuestionAnswer().getAnswer();
+                QA_TYPE type = moduleQuestionAnswer.getQuestionAnswer().getType();
+
+                UserBookmark userBookmark = UserBookmarkService.bookmarkedWithStatus(moduleQuestionAnswer.getId(), STATUS.ACTIVE);
+                List<UserComment> userComment = UserCommentService.commentsWithStatus(moduleQuestionAnswer.getId(), STATUS.ACTIVE);
+
+                QuestionAnswersModal questionAnswersModal = new QuestionAnswersModal(moduleGetId, questionAnswerGetId,
+                        question.getQuestion(), answer.getAnswer(), type, null, userBookmark, userComment);
+
+                //Find out only bookmarked
+                if(!onlyBookmarked) {
+                    questionAnswerModalList.add(questionAnswersModal);
+                } else if(onlyBookmarked && userBookmark != null) {
+                    questionAnswerModalList.add(questionAnswersModal);
+                }
+            }
+        }
+        return questionAnswerModalList;
+    }
 }
