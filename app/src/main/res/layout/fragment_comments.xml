@@ -36,11 +36,13 @@
             android:textColor="@android:color/primary_text_light"/>
 
     </RelativeLayout>
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_below="@+id/comments_qa_relativeLayout"
-        android:id="@+id/comments_comments_listview_frameLayout">
+        android:id="@+id/comments_comments_listview_frameLayout"
+        android:layout_above="@+id/footer_section">
 
         <!--Comments List View-->
         <ListView
@@ -49,30 +51,76 @@
             android:id="@+id/comments_list_view"></ListView>
 
 
-    </FrameLayout>
-    <RelativeLayout
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/footer_section"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_above="@+id/comments_comments_listview_frameLayout"
+        android:orientation="horizontal"
         >
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="8.5"
+
             android:inputType="textMultiLine"
-            android:ems="10"
             android:id="@+id/comment_comment_editText"
              />
 
         <Button
             style="?android:attr/buttonStyleSmall"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+
             android:onClick="addNewComment"
             android:id="@+id/comment_newcomment_button"
-            android:layout_toRightOf="@+id/comment_comment_editText"
+
             android:background="@android:drawable/ic_input_add" />
-    </RelativeLayout>
+    </LinearLayout>
+
+    <!--<LinearLayout
+        android:id="@+id/footer_section"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        >
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="8">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:inputType="textMultiLine"
+                android:id="@+id/comment_comment_editText"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+
+                android:onClick="addNewComment"
+                android:id="@+id/comment_newcomment_button"
+
+                android:background="@android:drawable/ic_input_add" />
+
+        </LinearLayout>
+
+    </LinearLayout>-->
 
 </RelativeLayout>
