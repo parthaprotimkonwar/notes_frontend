@@ -59,13 +59,18 @@ public class QuestionAnswerBookmarkFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        DataBundle dataBundle = DataBundle.getInstance();
+        /*DataBundle dataBundle = DataBundle.getInstance();
         Long chapterId = dataBundle.getChapterId();
         System.out.println("PARTHA : QuestionAnswerActivity : " + chapterId);
-        questionAnswerModalList = ChapterService.findQuestionAnswerForChapter(chapterId, true);
+        questionAnswerModalList = ChapterService.findQuestionAnswerForChapter(chapterId, true);*/
     }
 
     @Override
@@ -79,6 +84,10 @@ public class QuestionAnswerBookmarkFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        DataBundle dataBundle = DataBundle.getInstance();
+        Long chapterId = dataBundle.getChapterId();
+        questionAnswerModalList = ChapterService.findQuestionAnswerForChapter(chapterId, true);
 
         QuestionAnswerListAdapter questionAnswerListAdapter= new QuestionAnswerListAdapter(getContext(), R.layout.adapter_question_answers, questionAnswerModalList);
         ListView listView = (ListView) getActivity().findViewById(R.id.question_answers_list_view);

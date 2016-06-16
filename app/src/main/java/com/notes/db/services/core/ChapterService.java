@@ -62,6 +62,8 @@ public class ChapterService {
                 Answer answer = moduleQuestionAnswer.getQuestionAnswer().getAnswer();
                 QA_TYPE type = moduleQuestionAnswer.getQuestionAnswer().getType();
 
+                List<UserBookmark> all = UserBookmarkService.all();
+
                 UserBookmark userBookmark = UserBookmarkService.bookmarkedWithStatus(moduleQuestionAnswer.getId(), STATUS.ACTIVE);
                 List<UserComment> userComment = UserCommentService.commentsWithStatus(moduleQuestionAnswer.getId(), STATUS.ACTIVE);
 

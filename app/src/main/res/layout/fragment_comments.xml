@@ -52,75 +52,30 @@
 
 
     </LinearLayout>
+
+    <!--Footer Portion : Comments TextBox and Submit Button-->
     <LinearLayout
         android:id="@+id/footer_section"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
 
         <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="8.5"
-
             android:inputType="textMultiLine"
-            android:id="@+id/comment_comment_editText"
-             />
+            android:id="@+id/comment_comment_editText" />
 
         <Button
             style="?android:attr/buttonStyleSmall"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
-
             android:onClick="addNewComment"
             android:id="@+id/comment_newcomment_button"
-
             android:background="@android:drawable/ic_input_add" />
     </LinearLayout>
-
-    <!--<LinearLayout
-        android:id="@+id/footer_section"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        >
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="8">
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:inputType="textMultiLine"
-                android:id="@+id/comment_comment_editText"
-                />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            >
-
-            <Button
-                style="?android:attr/buttonStyleSmall"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-
-                android:onClick="addNewComment"
-                android:id="@+id/comment_newcomment_button"
-
-                android:background="@android:drawable/ic_input_add" />
-
-        </LinearLayout>
-
-    </LinearLayout>-->
 
 </RelativeLayout>
