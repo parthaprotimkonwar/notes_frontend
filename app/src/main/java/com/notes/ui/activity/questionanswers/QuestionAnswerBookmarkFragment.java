@@ -66,11 +66,6 @@ public class QuestionAnswerBookmarkFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        /*DataBundle dataBundle = DataBundle.getInstance();
-        Long chapterId = dataBundle.getChapterId();
-        System.out.println("PARTHA : QuestionAnswerActivity : " + chapterId);
-        questionAnswerModalList = ChapterService.findQuestionAnswerForChapter(chapterId, true);*/
     }
 
     @Override
