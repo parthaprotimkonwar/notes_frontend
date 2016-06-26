@@ -114,6 +114,6 @@ public class CoreFactorySetingsCallback implements Callback<CoreFactoryDto> {
 
     @Override
     public void onFailure(Call<CoreFactoryDto> call, Throwable t) {
-        Log.d("NOTES", "MAY DAY!" + t.getMessage() + t.fillInStackTrace());
+        Log.d("NOTES", "MAY DAY! Core Factory" + t.getMessage() + t.fillInStackTrace());
     }
 }

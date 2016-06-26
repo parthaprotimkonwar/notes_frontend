@@ -10,11 +10,15 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.notes.activity.R;
+import com.notes.db.models.core.Module;
+import com.notes.db.services.core.ModuleService;
 import com.notes.rest.RestClient;
 import com.notes.rest.service.callbacks.CoreFactorySetingsCallback;
 import com.notes.rest.service.callbacks.QuestionAnswerCallback;
 import com.notes.rest.service.dto.CoreFactoryDto;
 import com.notes.rest.service.dto.QuestionAnswerDto;
+
+import java.util.List;
 
 import retrofit2.Call;
 
@@ -61,6 +65,8 @@ public class MainActivity extends AppCompatActivity{
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //this.deleteDatabase("pickpick");
+        System.out.println("PARTHA : Database deleted");
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,8 +80,16 @@ public class MainActivity extends AppCompatActivity{
                 Call<CoreFactoryDto> factoryData = client.getCoreServices().coreFactorySettings();
                 factoryData.enqueue(new CoreFactorySetingsCallback());
 
-                Call<QuestionAnswerDto> questionAnswers = client.getCoreServices().questionAnswers(8L);
-                questionAnswers.enqueue(new QuestionAnswerCallback());
+                List<Module> allModules = ModuleService.allModules();
+                System.out.println("PARTHA Module Size:" + allModules.size());
+                for(Module module : allModules) {
+                    System.out.println("PARTHA" + module.getModuleId());
+                    Call<QuestionAnswerDto> questionAnswers = client.getCoreServices().questionAnswers(module.getModuleId());
+                    questionAnswers.enqueue(new QuestionAnswerCallback());
+                }
+
+                /*Call<QuestionAnswerDto> questionAnswers = client.getCoreServices().questionAnswers(8L);
+                questionAnswers.enqueue(new QuestionAnswerCallback());*/
 
                 /*ImageStorer imageStorer = SubjectService.findAImageStorer("SOMETWO1");
                 if(imageStorer != null) {

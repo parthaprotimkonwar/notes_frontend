@@ -33,7 +33,7 @@ public class Module extends Model {
     @Column(name = "MODULE_NAME")
     private String moduleName;
 
-    @Column(name = "INDEXING", notNull = true, unique = true)
+    @Column(name = "INDEXING", notNull = true)
     private Integer indexing;
 
     @Column(name = "STATUS")

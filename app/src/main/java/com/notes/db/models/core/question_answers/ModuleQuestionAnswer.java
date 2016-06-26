@@ -26,7 +26,7 @@ public class ModuleQuestionAnswer extends Model {
     @Column(name = "MODULE")
     private Module module;
 
-    @Column(name = "INDEXING", unique = true, notNull = true)
+    @Column(name = "INDEXING", notNull = true)
     private Integer indexing;
 
     public QuestionAnswer getQuestionAnswer() {

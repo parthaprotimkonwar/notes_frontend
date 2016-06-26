@@ -22,4 +22,12 @@ public class ModuleService {
     public static List<Module> modules(Long chapter) {
         return new Select().from(Module.class).where("CHAPTER = ?", chapter).execute();
     }
+
+    /**
+     * Find all modules
+     * @return
+     */
+    public static List<Module> allModules() {
+        return new Select().from(Module.class).execute();
+    }
 }

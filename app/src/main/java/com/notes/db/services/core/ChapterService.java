@@ -28,6 +28,11 @@ public class ChapterService {
      * @param chapterId
      * @return
      */
+   /* public static List<Chapter> findAChapter(List<Long> chapterId) {
+        *//*return new Select().from(Chapter.class).where("CHAPTER_ID = ?", chapterId).executeSingle();*//*
+        return new Select().from(Chapter.class).where("chalper=?", chapterId).execute();
+    }*/
+
     public static Chapter findAChapter(Long chapterId) {
         return new Select().from(Chapter.class).where("CHAPTER_ID = ?", chapterId).executeSingle();
     }
