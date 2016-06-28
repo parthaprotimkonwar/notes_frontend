@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by pkonwar on 4/30/2016.
  */
 public class RestClient {
-    private static final String BASE_URL = "http://192.168.0.101:9000/";
+    private static final String BASE_URL = "http://100.80.240.126:9000/";
 
     private CoreServices coreServices;
 

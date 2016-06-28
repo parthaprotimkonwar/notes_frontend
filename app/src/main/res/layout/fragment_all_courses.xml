@@ -15,9 +15,11 @@
     <GridView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:id="@+id/all_courses_grid_view"
+        android:stretchMode="spacingWidthUniform"
         android:numColumns="auto_fit"
-        android:columnWidth="160dp">
+        android:columnWidth="160dip">
 
     </GridView>
 

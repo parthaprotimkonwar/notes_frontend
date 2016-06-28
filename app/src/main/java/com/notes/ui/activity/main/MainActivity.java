@@ -42,14 +42,13 @@ public class MainActivity extends AppCompatActivity{
         setSupportActionBar(toolbar);
 
         //this.deleteDatabase("pickpick");
-        System.out.println("PARTHA : Database deleted");
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 //Part to populate the DB
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Downloading Content. Sit back and relax.", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 
                 RestClient client = new RestClient();
